@@ -1,9 +1,12 @@
 package by.palgogo.todolist.domain;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "task")
+@Data
 public class Task {
 
     @Id
@@ -11,9 +14,12 @@ public class Task {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "description", nullable = false)
+    @Column(name = "description", nullable = false, length = 500)
     private String description;
 
     @Column(name = "status", nullable = false)
    private Boolean doneStatus;
+
+    @ManyToOne
+    private Category category;
 }
