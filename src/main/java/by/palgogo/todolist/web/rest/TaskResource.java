@@ -1,7 +1,6 @@
 package by.palgogo.todolist.web.rest;
 
 import by.palgogo.todolist.domain.Task;
-import by.palgogo.todolist.repository.TaskRepository;
 import by.palgogo.todolist.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,7 +13,6 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @RestController
@@ -40,7 +38,7 @@ public class TaskResource {
     }
 
     @GetMapping("tasks/category/{categoryId}")
-    public List<Task> getCategoryTasks(@PathVariable Long categoryId){
+    public List<Task> getCategoryTasks(@PathVariable Long categoryId) {
         return taskService.getAllTasksInCategory(categoryId);
     }
 
@@ -56,7 +54,7 @@ public class TaskResource {
         Task result = taskService.createTask(task);
 
         return ResponseEntity.created(new URI("api/tasks/" + result.getId()))
-            .body(result);
+                .body(result);
     }
 
 }
