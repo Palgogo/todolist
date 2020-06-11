@@ -17,8 +17,8 @@ public class Task {
     @Column(name = "description", nullable = false, length = 500)
     private String description;
 
-    @Column(name = "status", nullable = false)
-   private Boolean doneStatus;
+    @Column(name = "status", nullable = false, columnDefinition = "boolean default false")
+    private Boolean doneStatus;
 
     @ManyToOne
     private Category category;
