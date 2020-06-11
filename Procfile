@@ -1,0 +1,1 @@
+web: java $JAVA_OPTS -Xmx256m -jar build/*.jar --server.port=8081
