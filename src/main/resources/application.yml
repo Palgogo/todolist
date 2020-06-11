@@ -2,8 +2,9 @@ springdoc:
   swagger-ui:
     path: '/'
 
+
 server:
-  port: 8081
+  port: ${PORT:8081}
 spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
