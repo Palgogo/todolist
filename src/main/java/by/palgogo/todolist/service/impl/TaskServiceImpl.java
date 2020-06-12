@@ -2,6 +2,7 @@ package by.palgogo.todolist.service.impl;
 
 import by.palgogo.todolist.domain.Task;
 import by.palgogo.todolist.repository.TaskRepository;
+import by.palgogo.todolist.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class TaskServiceImpl {
+public class TaskServiceImpl implements TaskService {
 
     @Autowired
     private TaskRepository taskRepository;
@@ -36,6 +37,7 @@ public class TaskServiceImpl {
         taskRepository.deleteById(taskId);
     }
 
+    //TODO should be PUT
     public void completeTask(Task task){
         Optional<Task> optionalTask = taskRepository.findById(task.getId());
         optionalTask.ifPresent(task1 -> {
