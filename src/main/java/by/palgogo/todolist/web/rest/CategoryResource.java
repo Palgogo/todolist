@@ -1,7 +1,7 @@
 package by.palgogo.todolist.web.rest;
 
 import by.palgogo.todolist.domain.Category;
-import by.palgogo.todolist.service.impl.CategoryServiceImpl;
+import by.palgogo.todolist.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +21,7 @@ import java.util.Optional;
 public class CategoryResource {
 
     @Autowired
-    private CategoryServiceImpl categoryService;
+    private CategoryService categoryService;
 
     @GetMapping("/categories")
 
