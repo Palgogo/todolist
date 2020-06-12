@@ -2,6 +2,7 @@ package by.palgogo.todolist.service.impl;
 
 import by.palgogo.todolist.domain.Category;
 import by.palgogo.todolist.repository.CategoryRepository;
+import by.palgogo.todolist.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +11,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 @Service
-public class CategoryServiceImpl {
+public class CategoryServiceImpl implements CategoryService {
 
     @Autowired
     private CategoryRepository categoryRepository;
