@@ -1,7 +1,7 @@
 package by.palgogo.todolist.web.rest;
 
 import by.palgogo.todolist.domain.Task;
-import by.palgogo.todolist.service.TaskService;
+import by.palgogo.todolist.service.impl.TaskServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +21,7 @@ import java.util.Optional;
 public class TaskResource {
 
     @Autowired
-    private TaskService taskService;
+    private TaskServiceImpl taskService;
 
 
     @GetMapping("/tasks")

@@ -1,7 +1,7 @@
 package by.palgogo.todolist.web.rest;
 
 import by.palgogo.todolist.domain.Category;
-import by.palgogo.todolist.service.CategoryService;
+import by.palgogo.todolist.service.impl.CategoryServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,9 +21,10 @@ import java.util.Optional;
 public class CategoryResource {
 
     @Autowired
-    private CategoryService categoryService;
+    private CategoryServiceImpl categoryService;
 
     @GetMapping("/categories")
+
     public List<Category> getCategories() {
         return categoryService.getAllCategories();
     }
@@ -36,6 +37,7 @@ public class CategoryResource {
     }
 
     @PostMapping("/categories")
+
     public ResponseEntity<?> createCategory(@Valid @RequestBody Category category) throws URISyntaxException {
         final Category result = categoryService.createCategory(category);
 
