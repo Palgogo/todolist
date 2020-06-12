@@ -24,6 +24,7 @@ public class CategoryResource {
     private CategoryService categoryService;
 
     @GetMapping("/categories")
+
     public List<Category> getCategories() {
         return categoryService.getAllCategories();
     }
@@ -36,6 +37,7 @@ public class CategoryResource {
     }
 
     @PostMapping("/categories")
+
     public ResponseEntity<?> createCategory(@Valid @RequestBody Category category) throws URISyntaxException {
         final Category result = categoryService.createCategory(category);
 
