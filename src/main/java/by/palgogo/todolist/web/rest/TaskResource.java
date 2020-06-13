@@ -2,7 +2,9 @@ package by.palgogo.todolist.web.rest;
 
 import by.palgogo.todolist.domain.Task;
 import by.palgogo.todolist.service.TaskService;
-import org.springframework.beans.factory.annotation.Autowired;
+import by.palgogo.todolist.service.dto.TaskDTO;
+import by.palgogo.todolist.service.mapper.TaskMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,12 +18,13 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api")
 @Transactional
 public class TaskResource {
 
-    @Autowired
-    private TaskService taskService;
+    private final TaskService taskService;
+    private final TaskMapper taskMapper;
 
 
     @GetMapping("/tasks")
@@ -50,8 +53,8 @@ public class TaskResource {
     }
 
     @PostMapping("/tasks")
-    public ResponseEntity<Task> createTask(@Valid @RequestBody Task task) throws URISyntaxException {
-        Task result = taskService.createTask(task);
+    public ResponseEntity<TaskDTO> createTask(@Valid @RequestBody TaskDTO taskDTO) throws URISyntaxException {
+        TaskDTO result = taskService.createTask(taskMapper.toTask(taskDTO));
 
         return ResponseEntity.created(new URI("api/tasks/" + result.getId()))
                 .body(result);
