@@ -19,10 +19,8 @@ public class TaskServiceImpl implements TaskService {
         return taskRepository.save(task);
     }
 
-    public Optional<Task> getTaskById(Long id){
-        Optional<Task> optionalTask = taskRepository.findById(id);
-
-        return optionalTask;
+    public Optional<Task> getTaskById(Long id) {
+        return taskRepository.findById(id);
     }
 
     public List<Task> getAllTasks() {
@@ -37,12 +35,11 @@ public class TaskServiceImpl implements TaskService {
         taskRepository.deleteById(taskId);
     }
 
-    //TODO should be PUT
-    public void completeTask(Task task){
-        Optional<Task> optionalTask = taskRepository.findById(task.getId());
-        optionalTask.ifPresent(task1 -> {
-            task1.setDoneStatus(true);
-            taskRepository.save(task1);
-        });
+    public Task changeTaskStatus(Long id) {
+        return taskRepository.findById(id)
+                .map(task -> {
+                    task.setDoneStatus(!task.getDoneStatus());
+                    return taskRepository.save(task);
+                }).orElseThrow();
     }
 }

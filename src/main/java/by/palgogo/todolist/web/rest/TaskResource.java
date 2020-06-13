@@ -57,4 +57,17 @@ public class TaskResource {
                 .body(result);
     }
 
+    @PatchMapping("/tasks/{id}")
+    public ResponseEntity<Task> updateTaskStatus(@PathVariable Long id) {
+        Task responseEntity = null;
+
+        try {
+            responseEntity = taskService.changeTaskStatus(id);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(responseEntity);
+    }
+
 }
