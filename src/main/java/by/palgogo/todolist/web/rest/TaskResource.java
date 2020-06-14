@@ -34,8 +34,9 @@ public class TaskResource {
 
     @GetMapping("tasks/{id}")
     public ResponseEntity<?> getTask(@PathVariable Long id) {
-        Optional<Task> task = taskService.getTaskById(id);
-        return (ResponseEntity<?>) task.map((response) -> ((ResponseEntity.BodyBuilder) ResponseEntity.ok().body(response)))
+        Optional<TaskDTO> task = taskService.getTaskById(id);
+        return task
+                .map((response) -> ResponseEntity.ok().body(response))
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
     }

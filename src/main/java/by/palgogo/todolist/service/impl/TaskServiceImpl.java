@@ -24,8 +24,15 @@ public class TaskServiceImpl implements TaskService {
         return taskMapper.toDTO(save);
     }
 
-    public Optional<Task> getTaskById(Long id) {
-        return taskRepository.findById(id);
+    public Optional<TaskDTO> getTaskById(Long id) {
+
+        Optional<Task> task = taskRepository.findById(id);
+        if (task.isPresent()){
+            TaskDTO taskDTO = taskMapper.toDTO(task.get());
+            return Optional.of(taskDTO);
+        }
+
+        return Optional.empty();
     }
 
     public List<TaskDTO> getAllTasks() {
