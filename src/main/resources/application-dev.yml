@@ -1,0 +1,45 @@
+springdoc:
+  swagger-ui:
+    path: '/swagger'
+
+
+server:
+  port: ${PORT:8081}
+
+spring:
+  profiles:
+    active: dev
+    include:
+      - swagger
+  devtools:
+    restart:
+      enabled: true
+    livereload:
+      enabled: true
+  datasource:
+    url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1
+    username: sa
+    password: sa
+    hikari:
+      pool-name: Hikari
+      auto-commit: false
+#    url: ${JDBC_DATABASE_URL}
+#    username: ${JDBC_DATABASE_USERNAME}
+#    password: ${JDBC_DATABASE_PASSWORD}
+#    hikari:
+#      maximum-pool-size: 8
+  h2:
+    console:
+      enabled: true
+  jpa:
+    show-sql: true
+    properties:
+      hibernate.jdbc.time_zone: UTC
+    hibernate:
+      ddl-auto: update
+
+logging:
+  level:
+    ROOT: DEBUG
+    by.palgogo.todolist: DEBUG
+

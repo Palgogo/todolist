@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -Dserver.port=$PORT -Xmx256m -jar build/libs/*.jar
+web: java $JAVA_OPTS -Dserver.port=$PORT -Xmx256m -jar build/libs/*.jar --spring.profiles.active=dev,heroku
