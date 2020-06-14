@@ -28,7 +28,7 @@ public class TaskResource {
 
 
     @GetMapping("/tasks")
-    public List<Task> getAllTasks() {
+    public List<TaskDTO> getAllTasks() {
         return taskService.getAllTasks();
     }
 

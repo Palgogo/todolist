@@ -28,8 +28,8 @@ public class TaskServiceImpl implements TaskService {
         return taskRepository.findById(id);
     }
 
-    public List<Task> getAllTasks() {
-        return taskRepository.findAll();
+    public List<TaskDTO> getAllTasks() {
+        return taskMapper.taskToTaskDTOs(taskRepository.findAll());
     }
 
     public List<Task> getAllTasksInCategory(Long categoryId) {

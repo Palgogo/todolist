@@ -12,7 +12,7 @@ public interface TaskService {
 
     Optional<Task> getTaskById(Long id);
 
-    List<Task> getAllTasks();
+    List<TaskDTO> getAllTasks();
 
     List<Task> getAllTasksInCategory(Long categoryId);
 

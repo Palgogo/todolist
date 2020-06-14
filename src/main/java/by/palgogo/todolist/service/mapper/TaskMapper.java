@@ -6,6 +6,8 @@ import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring", uses = {CategoryMapper.class})
 public interface TaskMapper {
 
@@ -14,4 +16,6 @@ public interface TaskMapper {
 
     @InheritInverseConfiguration
     Task toTask(TaskDTO taskDTO);
+
+    List<TaskDTO> taskToTaskDTOs(List<Task> tasks);
 }
