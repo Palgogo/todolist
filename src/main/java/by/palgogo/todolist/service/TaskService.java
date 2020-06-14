@@ -1,21 +1,21 @@
 package by.palgogo.todolist.service;
 
-import by.palgogo.todolist.domain.Task;
+import by.palgogo.todolist.service.dto.TaskDTO;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface TaskService {
 
-    Task createTask(Task task);
+    TaskDTO createTask(TaskDTO taskDTO);
 
-    Optional<Task> getTaskById(Long id);
+    Optional<TaskDTO> getTaskById(Long id);
 
-    List<Task> getAllTasks();
+    List<TaskDTO> getAllTasks();
 
-    List<Task> getAllTasksInCategory(Long categoryId);
+    List<TaskDTO> getAllTasksInCategory(Long categoryId);
 
     void deleteTask(Long taskId);
 
-    Task changeTaskStatus(Long id);
+    TaskDTO changeTaskStatus(Long id);
 }

@@ -1,23 +1,17 @@
 package by.palgogo.todolist.service;
 
-import by.palgogo.todolist.domain.Category;
+import by.palgogo.todolist.service.dto.CategoryDTO;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface CategoryService {
 
-    Category createCategory(String categoryName);
+    List<CategoryDTO> getAllCategories();
 
-    List<Category> getAllCategories();
+    Optional<CategoryDTO> getCategoryById(Long id);
 
-    Category getCategoryByName(String categoryName);
-
-    void deleteCategory(String categoryName);
-
-    Optional<Category> getCategoryById(Long id);
-
-    Category createCategory(Category category);
+    CategoryDTO createCategory(CategoryDTO category);
 
     void deleteCategory(Long categoryId);
 }
