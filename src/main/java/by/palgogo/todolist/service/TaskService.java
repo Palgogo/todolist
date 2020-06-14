@@ -14,7 +14,7 @@ public interface TaskService {
 
     List<TaskDTO> getAllTasks();
 
-    List<Task> getAllTasksInCategory(Long categoryId);
+    List<TaskDTO> getAllTasksInCategory(Long categoryId);
 
     void deleteTask(Long taskId);
 

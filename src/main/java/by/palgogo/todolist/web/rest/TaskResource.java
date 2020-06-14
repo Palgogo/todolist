@@ -41,7 +41,7 @@ public class TaskResource {
     }
 
     @GetMapping("tasks/category/{categoryId}")
-    public List<Task> getCategoryTasks(@PathVariable Long categoryId) {
+    public List<TaskDTO> getCategoryTasks(@PathVariable Long categoryId) {
         return taskService.getAllTasksInCategory(categoryId);
     }
 

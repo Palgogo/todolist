@@ -32,8 +32,8 @@ public class TaskServiceImpl implements TaskService {
         return taskMapper.taskToTaskDTOs(taskRepository.findAll());
     }
 
-    public List<Task> getAllTasksInCategory(Long categoryId) {
-        return taskRepository.findByCategory_Id(categoryId);
+    public List<TaskDTO> getAllTasksInCategory(Long categoryId) {
+        return taskMapper.taskToTaskDTOs(taskRepository.findByCategory_Id(categoryId));
     }
 
     public void deleteTask(Long taskId) {
