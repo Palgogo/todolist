@@ -1,6 +1,5 @@
 package by.palgogo.todolist.service;
 
-import by.palgogo.todolist.domain.Task;
 import by.palgogo.todolist.service.dto.TaskDTO;
 
 import java.util.List;
@@ -8,7 +7,7 @@ import java.util.Optional;
 
 public interface TaskService {
 
-    TaskDTO createTask(Task task);
+    TaskDTO createTask(TaskDTO taskDTO);
 
     Optional<TaskDTO> getTaskById(Long id);
 

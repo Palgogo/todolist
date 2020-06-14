@@ -15,11 +15,13 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Service
 public class TaskServiceImpl implements TaskService {
+
     @Autowired
     private TaskRepository taskRepository;
     private final TaskMapper taskMapper;
 
-    public TaskDTO createTask(Task task) {
+    public TaskDTO createTask(TaskDTO taskDTO) {
+        Task task = taskMapper.toTask(taskDTO);
         Task save = taskRepository.save(task);
         return taskMapper.toDTO(save);
     }
