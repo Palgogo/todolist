@@ -40,11 +40,12 @@ public class TaskServiceImpl implements TaskService {
         taskRepository.deleteById(taskId);
     }
 
-    public Task changeTaskStatus(Long id) {
+    public TaskDTO changeTaskStatus(Long id) {
         return taskRepository.findById(id)
                 .map(task -> {
                     task.setDoneStatus(!task.getDoneStatus());
-                    return taskRepository.save(task);
+                    Task save = taskRepository.save(task);
+                    return taskMapper.toDTO(save);
                 }).orElseThrow();
     }
 }

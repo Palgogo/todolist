@@ -1,6 +1,5 @@
 package by.palgogo.todolist.web.rest;
 
-import by.palgogo.todolist.domain.Task;
 import by.palgogo.todolist.service.TaskService;
 import by.palgogo.todolist.service.dto.TaskDTO;
 import by.palgogo.todolist.service.mapper.TaskMapper;
@@ -62,8 +61,8 @@ public class TaskResource {
     }
 
     @PatchMapping("/tasks/{id}")
-    public ResponseEntity<Task> updateTaskStatus(@PathVariable Long id) {
-        Task responseEntity = null;
+    public ResponseEntity<TaskDTO> updateTaskStatus(@PathVariable Long id) {
+        TaskDTO responseEntity = null;
 
         try {
             responseEntity = taskService.changeTaskStatus(id);
