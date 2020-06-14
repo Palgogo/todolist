@@ -25,14 +25,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     public Optional<TaskDTO> getTaskById(Long id) {
-
-        Optional<Task> task = taskRepository.findById(id);
-        if (task.isPresent()){
-            TaskDTO taskDTO = taskMapper.toDTO(task.get());
-            return Optional.of(taskDTO);
-        }
-
-        return Optional.empty();
+        return taskRepository.findById(id).map(taskMapper::toDTO);
     }
 
     public List<TaskDTO> getAllTasks() {
