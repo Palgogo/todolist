@@ -1,6 +1,5 @@
 package by.palgogo.todolist.web.rest;
 
-import by.palgogo.todolist.domain.Category;
 import by.palgogo.todolist.service.CategoryService;
 import by.palgogo.todolist.service.dto.CategoryDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,15 +24,15 @@ public class CategoryResource {
     private CategoryService categoryService;
 
     @GetMapping("/categories")
-
-    public List<Category> getCategories() {
+    public List<CategoryDTO> getCategories() {
         return categoryService.getAllCategories();
     }
 
     @GetMapping("/categories/{id}")
     public ResponseEntity<?> getCategory(@PathVariable Long id) {
-        Optional<Category> categoryById = categoryService.getCategoryById(id);
-        return (ResponseEntity<?>) categoryById.map((response) -> ((ResponseEntity.BodyBuilder) ResponseEntity.ok().body(response)))
+        Optional<CategoryDTO> categoryById = categoryService.getCategoryById(id);
+        return categoryById
+                .map((response) ->  ResponseEntity.ok().body(response))
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
@@ -48,6 +47,7 @@ public class CategoryResource {
     @DeleteMapping("/categories/{id}")
     public ResponseEntity<Void> deleteCategory(@PathVariable Long id) {
         categoryService.deleteCategory(id);
+
         return ResponseEntity.noContent().build();
     }
 
